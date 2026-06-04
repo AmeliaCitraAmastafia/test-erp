@@ -18,10 +18,10 @@ services:
     env_file: .env
     environment:
       SERVICE_ROLE: pencatatan
-      APP_URL: http://pencatatan.localhost
+      APP_URL: http://localhost
     labels:
       - traefik.enable=true
-      - traefik.http.routers.pencatatan.rule=Host(`pencatatan.localhost`)
+      - traefik.http.routers.pencatatan.rule=Host(`pencatatan.localhost`) || Host(`localhost`)
       - traefik.http.routers.pencatatan.entrypoints=web
       - traefik.http.services.pencatatan.loadbalancer.server.port=8000
     networks:

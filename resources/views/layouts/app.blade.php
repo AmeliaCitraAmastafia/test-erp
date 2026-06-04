@@ -23,8 +23,11 @@
         .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
         .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
         .brand { font-size: 18px; font-weight: 700; }
-        nav { display: flex; gap: 8px; flex-wrap: wrap; }
+        nav, .account { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
         nav a { color: var(--ink); text-decoration: none; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+        .account { justify-content: flex-end; }
+        .account form { display: inline; }
+        .account-name { color: var(--muted); font-size: 13px; }
         main { padding: 24px 0 40px; }
         h1 { font-size: 26px; margin: 0 0 18px; }
         h2 { font-size: 18px; margin: 0 0 12px; }
@@ -40,6 +43,7 @@
         textarea { min-height: 96px; resize: vertical; }
         form { display: grid; gap: 12px; }
         button, .button { border: 0; border-radius: 6px; background: var(--accent); color: #fff; padding: 10px 14px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
+        .button.secondary { background: #3d4f5c; }
         table { width: 100%; border-collapse: collapse; font-size: 14px; }
         th, td { border-bottom: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
         th { color: var(--muted); font-weight: 700; }
@@ -69,6 +73,17 @@
             <a href="{{ route('reports.index') }}">Cetak Laporan</a>
             <a href="{{ route('notifications.index') }}">Notif & Komunikasi</a>
         </nav>
+        <div class="account">
+            @auth
+                <span class="account-name">{{ auth()->user()->name }}</span>
+                <form method="post" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="secondary">Logout</button>
+                </form>
+            @else
+                <a class="button" href="{{ route('login') }}">Login Google</a>
+            @endauth
+        </div>
     </div>
 </header>
 <main>

@@ -26,6 +26,9 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => $query['sslmode'] ?? env('DB_SSLMODE', 'require'),
+            'options' => extension_loaded('pdo_pgsql') ? [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ] : [],
         ],
     ],
     'migrations' => [

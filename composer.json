@@ -4,7 +4,8 @@
     "description": "Inventory application with pencatatan, laporan, and notif services.",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
+        "laravel/socialite": "^5.21",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {

@@ -1,7 +1,7 @@
 http:
   routers:
     pencatatan:
-      rule: Host(`pencatatan.localhost`)
+      rule: Host(`pencatatan.localhost`) || Host(`localhost`)
       service: pencatatan
       entryPoints:
         - web
